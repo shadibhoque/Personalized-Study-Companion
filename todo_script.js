@@ -13,7 +13,7 @@ function addTask() {
 
         let span = document.createElement("span");
         let img = document.createElement("img");
-        img.src = "images/delete.png";
+        img.src = "delete.png";
         img.alt = "Delete"
         img.className = "delete-icon"
         li.appendChild(span)
