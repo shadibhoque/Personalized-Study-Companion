@@ -1,0 +1,76 @@
+/* Reset and global styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+/* Full-screen centered layout */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: skyblue;
+}
+
+/* Main container */
+.container {
+    width: 320px;
+    height: 100%;
+    background: white;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    border-radius: 10px;
+}
+
+/* Back button */
+.back-button {
+    display: inline-block;
+    text-decoration: none;
+    color: black;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+/* Title */
+.title {
+    text-decoration: underline;
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+/* Leaderboard header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Leaderboard entries */
+.entry {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #e0e0e0;
+    padding: 8px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+/* Name styling (no longer buttons) */
+.name {
+    flex-grow: 1;
+    text-align: left;
+    font-size: 14px;
+    color: #333;
+    padding: 5px 10px;
+}
+
+/* Progress styling */
+.progress {
+    font-size: 14px;
+}
