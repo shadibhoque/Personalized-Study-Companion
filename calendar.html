@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar View</title>
+    <link rel="stylesheet" href="calendar_styles.css">
+</head>
+<body>
+
+    <div class="app-background">
+        <div class="mock-phone">
+            <a href="homepage.html" class="back-button">← Back</a>
+
+            <div class="calendar-screen">
+                <h2 class="title">&larr; March &rarr;</h2>
+
+                <div id="calendar"></div>
+
+                <!-- Task Popup (Hidden by Default) -->
+                <div id="task-popup" class="task-popup">
+                    <h3>Tasks for <span id="popup-date"></span></h3>
+                    <ul id="task-list"></ul>
+                    <button class="close-btn" onclick="closePopup()">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="calendar_script.js"></script>
+
+</body>
+</html>
