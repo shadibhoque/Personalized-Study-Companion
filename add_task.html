@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Task</title>
+    <link rel="stylesheet" href="add_task_styles.css">
+</head>
+<body>
+
+    <div class="app-background">
+        <div class="mock-phone">
+            <div class="add-task-screen">
+                <a href="homepage.html" class="back-btn">← Back</a>
+                <h2>Add Task</h2>
+
+                <form id="task-form">
+                    <label for="activity-name">Activity Name:</label>
+                    <input type="text" id="activity-name" placeholder="Enter activity name" required>
+
+                    <label for="task-name">Task Name:</label>
+                    <input type="text" id="task-name" placeholder="Enter task name" required>
+
+                    <label for="due-date">Due Date:</label>
+                    <input type="date" id="due-date" required>
+
+                    <label for="difficulty">Set Difficulty:</label>
+                    <input type="number" id="difficulty" min="1" max="5" placeholder="1-5" required>
+
+                    <button type="submit" class="btn">Add Task</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("task-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+            alert("Task added successfully!");
+            window.location.href = "homepage.html"; // Redirect to homepage
+        });
+    </script>
+
+</body>
+</html>

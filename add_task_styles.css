@@ -1,0 +1,100 @@
+/* Reset Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+/* Fullscreen Background */
+.app-background {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: skyblue;
+}
+
+/* Mock Phone Frame */
+.mock-phone {
+    width: 360px;
+    height: 700px;
+    background: white;
+    border-radius: 40px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Speaker Notch */
+.mock-phone::before {
+    content: "";
+    width: 120px;
+    height: 20px;
+    background: black;
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 10px;
+}
+
+/* Add Task Screen */
+.add-task-screen {
+    width: 85%;
+    text-align: center;
+}
+
+/* Back Button */
+.back-btn {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 16px;
+    text-decoration: none;
+    color: black;
+}
+
+/* Title */
+h2 {
+    margin-bottom: 20px;
+}
+
+/* Form Fields */
+label {
+    display: block;
+    text-align: left;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    font-size: 16px;
+    margin-top: 5px;
+}
+
+/* Add Task Button */
+.btn {
+    width: 100%;
+    padding: 12px;
+    background: #007BFF;
+    border: none;
+    border-radius: 20px;
+    font-size: 16px;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 15px;
+}
+
+.btn:hover {
+    background: #0056b3;
+}
