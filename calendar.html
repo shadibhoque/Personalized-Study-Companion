@@ -12,18 +12,32 @@
         <div class="mock-phone">
             <a href="homepage.html" class="back-button">← Back</a>
 
-            <div class="calendar-screen">
-                <h2 class="title">&larr; March &rarr;</h2>
+            <h2 class="title">&larr; March &rarr;</h2>
+
+            <div class="calendar-container">
+                <!-- Weekday Headers -->
+                <div class="weekdays">
+                    <div>Sa</div>
+                    <div>Su</div>
+                    <div>Mo</div>
+                    <div>Tu</div>
+                    <div>We</div>
+                    <div>Th</div>
+                    <div>Fr</div>
+                </div>
 
                 <div id="calendar"></div>
-
-                <!-- Task Popup (Hidden by Default) -->
-                <div id="task-popup" class="task-popup">
-                    <h3>Tasks for <span id="popup-date"></span></h3>
-                    <ul id="task-list"></ul>
-                    <button class="close-btn" onclick="closePopup()">Close</button>
-                </div>
             </div>
+
+            <!-- Task List (Shows Below) -->
+            <div class="task-list-container">
+                <h3 id="task-date">Select a date</h3>
+                <ul id="task-list"></ul>
+            </div>
+
+            <!-- Floating Add Button -->
+            <div class="add-button">+</div>
+
         </div>
     </div>
 

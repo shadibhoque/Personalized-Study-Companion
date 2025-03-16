@@ -63,102 +63,110 @@ body {
 
 /* Calendar Title */
 .title {
-    position: absolute;
-    top: 60px;
-    left: 100px;
     font-size: 22px;
     text-align: center;
-    margin-bottom: 15px;
+    margin-top: 60px;
 }
 
+/* Calendar Container */
 .calendar-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    margin-top: 80px; /* Moves calendar lower */
+    margin-top: 10px;
 }
 
+/* Weekday Labels */
+.weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    width: 280px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+/* Calendar Grid */
 #calendar {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    gap: 10px;
-    margin-top: 30px; /* Adds extra space */
+    gap: 5px;
+    margin-top: 5px;
     padding: 10px;
+    width: 280px;
 }
 
+/* Individual Day */
 .day {
-    width: 42px;
-    height: 42px;
+    width: 35px;
+    height: 35px;
     display: flex;
     align-items: center;
     justify-content: center;
     background: #e0e0e0;
-    border-radius: 8px;
-    font-size: 16px;
+    border-radius: 6px;
+    font-size: 14px;
     cursor: pointer;
 }
 
+/* Highlighted Task Days */
 .task-day {
-    background: #ffcc00 !important; /* Highlights task days */
+    background: #ffcc00 !important;
     font-weight: bold;
 }
 
-
-
-/* Hover Effect 
-.day:hover {
-    background: #d1d1d1;
-}
-
-/* Highlighted Days with Tasks 
-.day.task-day {
-    background: #007BFF;
-    color: white;
-    font-weight: bold;
-}
-
-/* Task Popup
-.task-popup {
-    position: absolute;
-    bottom: 20px;
-    background: white;
+/* Task List Below */
+.task-list-container {
     width: 90%;
-    padding: 15px;
-    border-radius: 15px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    display: none;
+    max-height: 150px;
+    overflow-y: auto;
+    margin-top: 10px;
+    padding: 10px;
+    background: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.task-list-container h3 {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.task-list {
+    list-style: none;
+    padding: 0;
+    font-size: 14px;
+}
+
+.task-list li {
+    background: #d1e7ff;
+    padding: 6px;
+    margin: 4px 0;
+    border-radius: 5px;
     text-align: center;
 }
 
-.task-popup h3 {
-    margin-bottom: 10px;
-}
-
-.task-popup ul {
-    list-style: none;
-    padding: 0;
-}
-
-.task-popup li {
-    padding: 5px;
-    background: #f1f1f1;
-    margin: 5px 0;
-    border-radius: 5px;
-}
-
-/* Close Button 
-.close-btn {
-    margin-top: 10px;
-    padding: 5px 10px;
-    border: none;
+/* Floating Plus Button */
+.add-button {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
     background: #007BFF;
     color: white;
-    border-radius: 5px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 30px;
+    text-align: center;
+    line-height: 50px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     cursor: pointer;
+    transition: 0.3s;
 }
 
-.close-btn:hover {
+.add-button:hover {
     background: #0056b3;
 }
-*/
