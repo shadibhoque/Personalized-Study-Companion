@@ -1,0 +1,97 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: skyblue;
+}
+
+.container {
+    width: 320px;
+    height: 100%;
+    background: white;
+    padding: 25px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    border-radius: 10px;
+}
+
+.title {
+    text-decoration: underline;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.todo-list h3 {
+    text-align: left;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.task {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #e0e0e0;
+    margin-bottom: 10px;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.task-button {
+    background: #e0e0e0;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    flex-grow: 1; /* Makes the button fill the space */
+    text-align: left;
+}
+
+.task-button:hover {
+    background: #ffffff;
+}
+
+.task input[type="checkbox"] {
+    transform: scale(1.2);
+    cursor: pointer;
+    margin-right: 10px;  /* Space between checkbox and button */
+}
+
+.add-task {
+    background: none;
+    border: none;
+    color: rgb(26, 26, 27);
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 300px;
+}
+
+.footer-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;;
+}
+
+.footer-btn a {
+    text-decoration: none;
+    color: black;
+}
+
+.footer-btn:visited {
+    color: black;
+}
