@@ -1,4 +1,4 @@
-/* Reset and global styles */
+/* Reset Styles */
 * {
     margin: 0;
     padding: 0;
@@ -6,97 +6,98 @@
     font-family: "Poppins", sans-serif;
 }
 
-/* Centered full-screen layout */
-body {
+/* Fullscreen Background */
+.app-background {
+    width: 100vw;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    background: skyblue;
+    background: skyblue
 }
 
-/* Main container with phone-like display */
-.wrapper {
-    width: 320px;
-    height: 100%;
+/* Mock Phone Frame */
+.mock-phone {
+    width: 360px;
+    height: 700px;
     background: white;
-    color: black;
+    border-radius: 40px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Speaker Notch (Fake Phone Look) */
+.mock-phone::before {
+    content: "";
+    width: 120px;
+    height: 20px;
+    background: black;
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
     border-radius: 10px;
-    padding: 25px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Phone Screen (Login Form Area) */
+.phone-screen {
+    width: 85%;
     text-align: center;
 }
 
 /* Title */
-.wrapper h1 {
+.phone-screen h1 {
     font-size: 24px;
-    text-align: center;
-    text-decoration: underline;
+    margin-bottom: 20px;
 }
 
-/* Input field container */
-.wrapper .input-box {
+/* Input Fields */
+.input-box {
     width: 100%;
-    height: 45px;
-    margin: 20px 0;
-    position: relative;
+    margin-bottom: 15px;
 }
 
-/* Input field styling */
 .input-box input {
     width: 100%;
-    height: 100%;
-    background: transparent;
+    padding: 12px;
+    border-radius: 20px;
     border: 2px solid rgba(0, 0, 0, 0.2);
-    border-radius: 40px;
     font-size: 16px;
-    color: black;
-    padding: 10px 20px;
-    outline: none;
+    text-align: center;
 }
 
-/* Placeholder text color */
-.input-box input::placeholder {
-    color: gray;
-}
-
-/* Icon inside input field */
-.input-box i {
-    position: absolute;
-    right: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 18px;
-    color: gray;
-}
-
-/* Button styling */
-.wrapper .btn {
+/* Login Button */
+.btn {
     width: 100%;
-    height: 45px;
-    background: black;
+    padding: 12px;
+    background: #007BFF;
     border: none;
-    border-radius: 40px;
+    border-radius: 20px;
     font-size: 16px;
     color: white;
-    font-weight: 600;
     cursor: pointer;
-    transition: 0.3s ease;
+    transition: 0.3s;
 }
 
-/* Button hover effect */
-.wrapper .btn:hover {
-    background: darkgray;
+.btn:hover {
+    background: #0056b3;
 }
 
-/* Anchor tag inside button */
-.btn a {
-    color: white;
+/* Signup Text */
+.signup-text {
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.signup-text a {
+    color: #007BFF;
     text-decoration: none;
 }
 
-/* Visited link color */
-.btn:visited {
-    color: white;
+.signup-text a:hover {
+    text-decoration: underline;
 }
-

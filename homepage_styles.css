@@ -1,3 +1,4 @@
+/* Reset styles */
 * {
     margin: 0;
     padding: 0;
@@ -5,93 +6,119 @@
     font-family: "Poppins", sans-serif;
 }
 
+/* Fullscreen Background */
 body {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: skyblue;
+    background: skyblue;
 }
 
-.container {
-    width: 320px;
-    height: 100%;
+/* Mock Phone Frame */
+.mock-phone {
+    width: 360px;
+    height: 700px;
     background: white;
-    padding: 25px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    text-align: center;
+    border-radius: 40px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Speaker Notch (Fake Phone Look) */
+.mock-phone::before {
+    content: "";
+    width: 120px;
+    height: 20px;
+    background: black;
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
     border-radius: 10px;
 }
 
-.title {
-    text-decoration: underline;
-    font-size: 20px;
-    margin-bottom: 20px;
+/* Phone Screen (Homepage Content) */
+.home-screen {
+    width: 85%;
+    text-align: center;
 }
 
+/* Title */
+.title {
+    font-size: 22px;
+    text-decoration: underline;
+    margin-bottom: 15px;
+}
+
+/* To-Do List Section */
 .todo-list h3 {
     text-align: left;
-    font-size: 16px;
+    font-size: 18px;
     margin-bottom: 10px;
 }
 
+/* Task Container */
 .task {
     display: flex;
     align-items: center;
     justify-content: space-between;
     background: #e0e0e0;
+    padding: 10px;
     margin-bottom: 10px;
-    padding: 5px;
-    border-radius: 5px;
+    border-radius: 10px;
 }
 
+/* Task Button */
 .task-button {
-    background: #e0e0e0;
+    background: none;
     border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
+    font-size: 16px;
     cursor: pointer;
-    font-size: 14px;
-    flex-grow: 1; /* Makes the button fill the space */
+    flex-grow: 1;
     text-align: left;
 }
 
-.task-button:hover {
-    background: #ffffff;
-}
-
+/* Checkbox */
 .task input[type="checkbox"] {
     transform: scale(1.2);
     cursor: pointer;
-    margin-right: 10px;  /* Space between checkbox and button */
+    margin-right: 10px;
 }
 
+/* Add Task Button */
 .add-task {
     background: none;
     border: none;
-    color: rgb(26, 26, 27);
+    font-size: 18px;
+    color: black;
     cursor: pointer;
-    margin-top: 10px;
 }
 
+/* Footer Navigation */
 .footer {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
     display: flex;
-    justify-content: space-between;
-    margin-top: 300px;
+    justify-content: left;
+    padding: 15px;
 }
 
+/* Footer Buttons */
 .footer-btn {
     background: none;
     border: none;
     cursor: pointer;
-    font-size: 14px;;
+    font-size: 14px;
 }
 
+/* Footer Links */
 .footer-btn a {
     text-decoration: none;
-    color: black;
-}
-
-.footer-btn:visited {
     color: black;
 }
