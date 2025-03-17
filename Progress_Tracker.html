@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progress Tracker</title>
+    <link rel="stylesheet" href="progressPageStyle.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!--Navbar-->
+
+    <!--Content Box-->
+    <div class="content-box">
+        <a href="homepage.html" class="back-button">← Back</a>
+        <div class="Progress-Tracker-Text">Progress Tracker</div>
+        
+        <!-- Clickable Toggle Text -->
+        <div class="toggle-container">
+            <span class="toggle-text" onclick="toggleGraph()">Yearly</span>
+        </div>
+        
+        <div class="graph-display">
+            <canvas id="graphCanvas"></canvas>
+        </div>
+    </div>
+
+    <!--Javascript file-->
+    <script src="Progress_Tracker_Script.js"></script>
+    
+</body>
+</html>
