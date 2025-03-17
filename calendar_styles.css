@@ -1,0 +1,172 @@
+/* Reset Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+/* Fullscreen Background */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: skyblue;
+}
+
+/* Mock Phone Frame */
+.mock-phone {
+    width: 360px;
+    height: 700px;
+    background: white;
+    border-radius: 40px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Speaker Notch (Fake Phone Look) */
+.mock-phone::before {
+    content: "";
+    width: 120px;
+    height: 20px;
+    background: black;
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 10px;
+}
+
+/* Back Button */
+.back-button {
+    position: absolute;
+    top: 15px;
+    left: 20px;
+    text-decoration: none;
+    color: black;
+    font-size: 16px;
+    background: rgba(255, 255, 255, 0.7);
+    padding: 5px 10px;
+    border-radius: 15px;
+    transition: 0.3s;
+}
+
+.back-button:hover {
+    background: rgba(200, 200, 200, 0.9);
+}
+
+/* Calendar Title */
+.title {
+    font-size: 22px;
+    text-align: center;
+    margin-top: 60px;
+}
+
+/* Calendar Container */
+.calendar-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 10px;
+}
+
+/* Weekday Labels */
+.weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    width: 280px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+/* Calendar Grid */
+#calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    margin-top: 5px;
+    padding: 10px;
+    width: 280px;
+}
+
+/* Individual Day */
+.day {
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #e0e0e0;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+/* Highlighted Task Days */
+.task-day {
+    background: #ffcc00 !important;
+    font-weight: bold;
+}
+
+/* Task List Below */
+.task-list-container {
+    width: 90%;
+    max-height: 150px;
+    overflow-y: auto;
+    margin-top: 10px;
+    padding: 10px;
+    background: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.task-list-container h3 {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.task-list {
+    list-style: none;
+    padding: 0;
+    font-size: 14px;
+}
+
+.task-list li {
+    background: #d1e7ff;
+    padding: 6px;
+    margin: 4px 0;
+    border-radius: 5px;
+    text-align: center;
+}
+
+/* Floating Plus Button */
+.add-button {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background: #007BFF;
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 30px;
+    text-align: center;
+    line-height: 50px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.add-button:hover {
+    background: #0056b3;
+}
