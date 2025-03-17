@@ -1,4 +1,11 @@
 document.getElementById("add-task-btn").addEventListener("click", function () {
+    const taskName = document.getElementById("task-name-input").value.trim(); // Get the task name
+
+    if (taskName === "") {
+        alert("Please enter a task name.");
+        return;
+    }
+
     const taskContainer = document.getElementById("task-container");
 
     // Create task div
@@ -9,10 +16,10 @@ document.getElementById("add-task-btn").addEventListener("click", function () {
     const checkbox = document.createElement("input");
     checkbox.type = "checkbox";
 
-    // Create button for task name
+    // Create button for task name with user input
     const taskButton = document.createElement("button");
     taskButton.classList.add("task-button");
-    taskButton.textContent = "New Task";
+    taskButton.textContent = taskName; // Set task name to user input
 
     // Create task weight container
     const weightContainer = document.createElement("div");
@@ -37,4 +44,7 @@ document.getElementById("add-task-btn").addEventListener("click", function () {
     taskDiv.appendChild(weightContainer);
 
     taskContainer.appendChild(taskDiv);
+
+    // Clear the task name input field after adding the task
+    document.getElementById("task-name-input").value = "";
 });

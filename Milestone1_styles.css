@@ -90,6 +90,30 @@ body {
     margin-right: 10px;
 }
 
+.task-input-container {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.task-input-container input {
+    padding: 8px;
+    margin-right: 10px;
+    width: 200px; /* Adjust width as necessary */
+}
+
+.task-input-container button {
+    padding: 8px 16px;
+    background-color: #4CAF50; /* Green button */
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.task-input-container button:hover {
+    background-color: #45a049;
+}
+
 .task-weight {
     width: calc(100% - 20px);  
     margin-right: 5px;  
@@ -125,4 +149,11 @@ body {
 .add-task:hover {
     background: #0056b3;
 }
+
+.task-input, .task-weight {
+    width: 100%; /* Make the task input fields full width */
+    padding: 8px;
+    margin-bottom: 5px;
+}
+
 
