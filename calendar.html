@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar View</title>
+    <link rel="stylesheet" href="calendar_styles.css">
+</head>
+<body>
+
+    <div class="app-background">
+        <div class="mock-phone">
+            <a href="homepage.html" class="back-button">← Back</a>
+
+            <h2 class="title">&larr; March &rarr;</h2>
+
+            <div class="calendar-container">
+                <!-- Weekday Headers -->
+                <div class="weekdays">
+                    <div>Sa</div>
+                    <div>Su</div>
+                    <div>Mo</div>
+                    <div>Tu</div>
+                    <div>We</div>
+                    <div>Th</div>
+                    <div>Fr</div>
+                </div>
+
+                <div id="calendar"></div>
+            </div>
+
+            <!-- Task List (Shows Below) -->
+            <div class="task-list-container">
+                <h3 id="task-date">Select a date</h3>
+                <ul id="task-list"></ul>
+            </div>
+
+            <!-- Floating Add Button -->
+            <div class="add-button">+</div>
+
+        </div>
+    </div>
+
+    <script src="calendar_script.js"></script>
+
+</body>
+</html>
