@@ -81,6 +81,7 @@ body {
     cursor: pointer;
     flex-grow: 1;
     text-align: left;
+    display: inline;
 }
 
 /* Checkbox */
