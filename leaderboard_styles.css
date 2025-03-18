@@ -1,109 +1,78 @@
-/* Reset styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
-}
-
-/* Fullscreen Background */
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background: skyblue;
-}
-
-/* Mock Phone Frame */
-.mock-phone {
-    width: 360px;
-    height: 700px;
-    background: white;
-    border-radius: 40px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
+.leaderboard {
+    background: var(--surface-color);
+    border-radius: var(--border-radius-md);
     overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
-
-/* Speaker Notch (Fake Phone Look) */
-.mock-phone::before {
-    content: "";
-    width: 120px;
-    height: 20px;
-    background: black;
-    position: absolute;
-    top: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    border-radius: 10px;
-}
-
-/* Phone Screen (Leaderboard Area) */
-.leaderboard-screen {
-    width: 85%;
-    text-align: center;
-}
-
-/* Back Button - Top Left */
-.back-button {
-    position: absolute;
-    top: 40px;
-    left: 20px;
-    text-decoration: none;
-    color: #000000;
-    font-size: 16px;
-    background: rgba(255, 255, 255, 0.7); /* Light background for visibility */
-    padding: 8px 12px;
-    border-radius: 15px;
-    transition: background 0.3s ease-in-out;
-}
-
-/* Back Button Hover Effect */
-.back-button:hover {
-    background: rgba(200, 200, 200, 0.9);
-}
-
-/* Title */
-.title {
-    font-size: 24px;
-    margin-bottom: 15px;
-    color: #333;
-}
-
-/* Leaderboard Header */
-.leaderboard .header {
-    display: flex;
-    justify-content: space-between;
+.header {
+    display: grid;
+    grid-template-columns: 50px 1fr 80px;
+    padding: var(--spacing-sm);
+    background: var(--primary-color);
+    color: var(--surface-color);
     font-weight: bold;
-    background: #f1f1f1;
-    padding: 10px;
-    border-radius: 10px;
-    margin-bottom: 10px;
 }
-
-/* Leaderboard Entries */
 .entry {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 50px 1fr 80px;
+    padding: var(--spacing-sm);
+    border-bottom: 1px solid var(--border-color);
     align-items: center;
-    background: #e3e3e3;
-    padding: 10px;
-    margin: 5px 0;
-    border-radius: 10px;
-    transition: 0.3s;
 }
-
-/* Hover effect for leaderboard entries */
-.entry:hover {
-    background: #d1d1d1;
+.entry:last-child {
+    border-bottom: none;
 }
-
-/* Progress Styling */
+.name {
+    font-weight: 500;
+}
 .progress {
-    font-weight: bold;
-    color: #007BFF;
+    text-align: right;
+    color: var(--success-color);
+}
+.add-user-section {
+    background: var(--surface-color);
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius-md);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    display: flex;
+    gap: var(--spacing-sm);
+    align-items: center;
+}
+.input-container {
+    flex: 3;
+    position: relative;
+}
+.form-input {
+    width: 100%;
+    padding: var(--spacing-sm);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-sm);
+    font-size: var(--font-size-sm);
+}
+.suggestions-container {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-top: none;
+    border-radius: 0 0 var(--border-radius-sm) var(--border-radius-sm);
+    max-height: 150px;
+    overflow-y: auto;
+    z-index: 1000;
+}
+.suggestion {
+    padding: var(--spacing-sm);
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+.suggestion:hover {
+    background-color: var(--light-gray);
+}
+.add-user-section .btn {
+    flex: 0.7;
+    white-space: nowrap;
+    padding: var(--spacing-sm) var(--spacing-md);
+    min-width: fit-content;
 }

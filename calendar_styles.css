@@ -1,172 +1,146 @@
-/* Reset Styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
-}
-
-/* Fullscreen Background */
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background: skyblue;
-}
-
-/* Mock Phone Frame */
-.mock-phone {
-    width: 360px;
-    height: 700px;
-    background: white;
-    border-radius: 40px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    position: relative;
-    overflow: hidden;
-}
-
-/* Speaker Notch (Fake Phone Look) */
-.mock-phone::before {
-    content: "";
-    width: 120px;
-    height: 20px;
-    background: black;
-    position: absolute;
-    top: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    border-radius: 10px;
-}
-
-/* Back Button */
-.back-button {
-    position: absolute;
-    top: 15px;
-    left: 20px;
-    text-decoration: none;
-    color: black;
-    font-size: 16px;
-    background: rgba(255, 255, 255, 0.7);
-    padding: 5px 10px;
-    border-radius: 15px;
-    transition: 0.3s;
-}
-
-.back-button:hover {
-    background: rgba(200, 200, 200, 0.9);
-}
-
-/* Calendar Title */
-.title {
-    font-size: 22px;
-    text-align: center;
-    margin-top: 60px;
-}
-
-/* Calendar Container */
 .calendar-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    margin-top: 10px;
+    margin: var(--spacing-md) 0;
+    width: 100%;
 }
-
-/* Weekday Labels */
 .weekdays {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    gap: 5px;
-    width: 280px;
     text-align: center;
     font-weight: bold;
-    font-size: 14px;
-    margin-bottom: 5px;
+    margin-bottom: var(--spacing-sm);
+    font-size: var(--font-size-sm);
 }
-
-/* Calendar Grid */
 #calendar {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    gap: 5px;
-    margin-top: 5px;
-    padding: 10px;
-    width: 280px;
+    gap: var(--spacing-xs);
 }
-
-/* Individual Day */
-.day {
-    width: 35px;
-    height: 35px;
+.calendar-day {
+    padding: var(--spacing-xs);
+    text-align: center;
+    border-radius: var(--border-radius-sm);
+    cursor: pointer;
+    background: var(--light-gray);
+    transition: all 0.3s ease;
+    font-size: var(--font-size-sm);
+}
+.calendar-day:hover {
+    background: var(--primary-color);
+    color: var(--surface-color);
+}
+.calendar-day.selected {
+    background: var(--primary-color);
+    color: var(--surface-color);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    transform: scale(1.05);
+}
+.task-list-container {
+    margin-top: var(--spacing-lg);
+    padding: var(--spacing-md);
+    background: var(--light-gray);
+    border-radius: var(--border-radius-md);
+    max-height: 200px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;  /* IE and Edge */
+}
+.task-list-container::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+}
+.upcoming-task-container {
+    position: relative;
+    margin-top: var(--spacing-lg);
+    padding: var(--spacing-md);
+    background: var(--surface-color);
+    border-top: 1px solid var(--border-color);
+    margin-bottom: var(--spacing-md);
+}
+.screen-container {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;  /* IE and Edge */
+    overflow-x: hidden;
+    width: 85%;
+    max-width: 300px;
+}
+.screen-container::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+}
+.task {
     display: flex;
     align-items: center;
-    justify-content: center;
-    background: #e0e0e0;
-    border-radius: 6px;
-    font-size: 14px;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-sm);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-md);
+    margin-bottom: var(--spacing-sm);
+    flex-wrap: wrap;
+}
+.task-button {
+    flex: 1;
+    min-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.task-progress {
+    white-space: nowrap;
+}
+h1 {
+    font-size: var(--font-size-xl);
+    white-space: nowrap;
+}
+.calendar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--spacing-md);
+    padding: 0 var(--spacing-sm);
+}
+.calendar-nav-btn {
+    background: none;
+    border: none;
+    font-size: var(--font-size-lg);
+    color: var(--primary-color);
     cursor: pointer;
+    padding: var(--spacing-sm);
+    transition: color 0.3s ease;
 }
-
-/* Highlighted Task Days */
-.task-day {
-    background: #ffcc00 !important;
-    font-weight: bold;
+.calendar-nav-btn:hover {
+    color: var(--primary-hover);
 }
-
-/* Task List Below */
-.task-list-container {
-    width: 90%;
-    max-height: 150px;
+.suggested-schedule-container {
+    margin-top: var(--spacing-lg);
+    padding: var(--spacing-md);
+    background: var(--light-gray);
+    border-radius: var(--border-radius-md);
+    max-height: 300px;
     overflow-y: auto;
-    margin-top: 10px;
-    padding: 10px;
-    background: #f9f9f9;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    overflow-x: hidden;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;  /* IE and Edge */
 }
-
-.task-list-container h3 {
-    font-size: 18px;
-    margin-bottom: 5px;
+.suggested-schedule-container::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
 }
-
-.task-list {
-    list-style: none;
-    padding: 0;
-    font-size: 14px;
+.suggested-task {
+    background-color: var(--surface-color);
+    margin-bottom: var(--spacing-sm);
 }
-
-.task-list li {
-    background: #d1e7ff;
-    padding: 6px;
-    margin: 4px 0;
-    border-radius: 5px;
+.difficulty-indicator {
+    display: inline-block;
+    margin-right: var(--spacing-xs);
+    font-size: var(--font-size-sm);
+    color: var(--warning-color);
+}
+.difficulty-1 { opacity: 0.2; }
+.difficulty-2 { opacity: 0.4; }
+.difficulty-3 { opacity: 0.6; }
+.difficulty-4 { opacity: 0.8; }
+.difficulty-5 { opacity: 1; }
+.no-tasks {
     text-align: center;
-}
-
-/* Floating Plus Button */
-.add-button {
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
-    background: #007BFF;
-    color: white;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    font-size: 30px;
-    text-align: center;
-    line-height: 50px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.add-button:hover {
-    background: #0056b3;
+    color: var(--secondary-color);
+    padding: var(--spacing-md);
+    font-style: italic;
 }

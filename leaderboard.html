@@ -4,44 +4,193 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Leaderboard</title>
+    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="leaderboard_styles.css">
 </head>
 <body>
+    <div class="mock-phone">
+        <div class="screen-container">
+            <a href="homepage.html" class="footer-btn mb-2">← Back</a>
+            <h1>LEADERBOARD</h1>
 
-    <div class="app-background">
-        <div class="mock-phone">
-            <div class="leaderboard-screen">
-                <a href="homepage.html" class="back-button">← Back</a>
-                <h2 class="title">LEADERBOARD</h2>
+            <div class="add-user-section mb-2">
+                <div class="input-container">
+                    <input type="text" id="username-input" placeholder="Type a name to search" class="form-input">
+                    <div id="suggestions" class="suggestions-container"></div>
+                    <div id="input-feedback" class="input-feedback"></div>
+                </div>
+                <button onclick="handleAddUser()" class="btn" id="add-button" disabled>Add</button>
+            </div>
 
-                <div class="leaderboard">
-                    <div class="header">
-                        <span>Pos</span>
-                        <span>Name</span>
-                        <span>Progress</span>
-                    </div>
-
-                    <div class="entry">
-                        <span>①</span>
-                        <span class="name">Walter</span>
-                        <span class="progress">80%</span>
-                    </div>
-
-                    <div class="entry">
-                        <span>②</span>
-                        <span class="name">Saul</span>
-                        <span class="progress">70%</span>
-                    </div>
-
-                    <div class="entry">
-                        <span>③</span>
-                        <span class="name">Fring</span>
-                        <span class="progress">50%</span>
-                    </div>
+            <div class="leaderboard" id="leaderboard-container">
+                <div class="header">
+                    <span>Pos</span>
+                    <span>Name</span>
+                    <span>Progress</span>
+                </div>
+                <div id="leaderboard-content">
+                    <!-- Leaderboard entries will be added here -->
+                </div>
+                <div id="empty-state" class="empty-state">
+                    Start by adding users to the leaderboard
                 </div>
             </div>
         </div>
     </div>
 
+    <script src="userManager.js"></script>
+    <script>
+        let validUserSelected = false;
+
+        // Function to render the leaderboard
+        function renderLeaderboard() {
+            const container = document.getElementById('leaderboard-content');
+            const emptyState = document.getElementById('empty-state');
+            container.innerHTML = '';
+
+            const leaderboardData = getLeaderboardData();
+            
+            if (leaderboardData.length === 0) {
+                emptyState.style.display = 'block';
+                return;
+            }
+
+            emptyState.style.display = 'none';
+            const positions = ['①', '②', '③', '④', '⑤', '⑥', '⑦', '⑧', '⑨', '⑩'];
+
+            // Sort leaderboard data by progress
+            leaderboardData.sort((a, b) => b.progress - a.progress);
+
+            leaderboardData.forEach((user, index) => {
+                const entry = document.createElement('div');
+                entry.className = 'entry';
+                entry.innerHTML = `
+                    <span>${positions[index] || (index + 1)}</span>
+                    <span class="name">${user.name}</span>
+                    <span class="progress">${user.progress}%</span>
+                `;
+                container.appendChild(entry);
+            });
+        }
+
+        // Function to handle adding a new user
+        async function handleAddUser() {
+            const input = document.getElementById('username-input');
+            const username = input.value.trim();
+            const addButton = document.getElementById('add-button');
+            const feedbackElement = document.getElementById('input-feedback');
+
+            if (!username || !validUserSelected) {
+                return;
+            }
+
+            const isValid = await validateUsername(username);
+            if (!isValid) {
+                feedbackElement.textContent = 'User not found in the system';
+                feedbackElement.className = 'input-feedback error';
+                return;
+            }
+
+            if (await addUser(username)) {
+                input.value = '';
+                document.getElementById('suggestions').innerHTML = '';
+                feedbackElement.textContent = '';
+                addButton.disabled = true;
+                validUserSelected = false;
+                renderLeaderboard();
+            } else {
+                feedbackElement.textContent = 'This user is already on the leaderboard';
+                feedbackElement.className = 'input-feedback error';
+            }
+        }
+
+        // Function to show username suggestions
+        async function showSuggestions() {
+            const input = document.getElementById('username-input');
+            const suggestionsContainer = document.getElementById('suggestions');
+            const addButton = document.getElementById('add-button');
+            const feedbackElement = document.getElementById('input-feedback');
+            const inputValue = input.value.trim();
+
+            validUserSelected = false;
+            addButton.disabled = true;
+            feedbackElement.textContent = '';
+
+            if (!inputValue) {
+                suggestionsContainer.innerHTML = '';
+                return;
+            }
+
+            const suggestions = await getUserSuggestions(inputValue);
+            suggestionsContainer.innerHTML = '';
+
+            if (suggestions.length === 0) {
+                feedbackElement.textContent = 'No matching users found';
+                feedbackElement.className = 'input-feedback error';
+                return;
+            }
+
+            suggestions.forEach(suggestion => {
+                const div = document.createElement('div');
+                div.className = 'suggestion';
+                div.textContent = suggestion;
+                div.onclick = () => {
+                    input.value = suggestion;
+                    suggestionsContainer.innerHTML = '';
+                    validUserSelected = true;
+                    addButton.disabled = false;
+                    feedbackElement.textContent = 'User found! Click Add to include them';
+                    feedbackElement.className = 'input-feedback success';
+                };
+                suggestionsContainer.appendChild(div);
+            });
+        }
+
+        // Add event listener for input changes
+        document.getElementById('username-input').addEventListener('input', showSuggestions);
+
+        // Add event listener for Enter key in input
+        document.getElementById('username-input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter' && !e.shiftKey && validUserSelected) {
+                handleAddUser();
+            }
+        });
+
+        // Initial render
+        renderLeaderboard();
+    </script>
+
+    <style>
+        .empty-state {
+            padding: var(--spacing-lg);
+            text-align: center;
+            color: var(--secondary-color);
+            font-size: var(--font-size-sm);
+            border-top: 1px solid var(--border-color);
+        }
+
+        .input-feedback {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 100%;
+            margin-top: 4px;
+            font-size: var(--font-size-xs);
+            padding: 4px 8px;
+        }
+
+        .input-feedback.error {
+            color: var(--error-color);
+        }
+
+        .input-feedback.success {
+            color: var(--success-color);
+        }
+
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+    </style>
 </body>
 </html>

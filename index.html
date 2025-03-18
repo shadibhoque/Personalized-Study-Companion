@@ -10,22 +10,19 @@
 </head>
 
 <body>
-
-    <div class="app-background">
-        <div class="mock-phone">
-            <div class="phone-screen">
-                <h1>Login</h1>
-                <form onsubmit="return loginRedirect(event)">
-                    <div class="input-box">
-                        <input type="text" placeholder="Username" required>
-                    </div>
-                    <div class="input-box">
-                        <input type="password" placeholder="Password" required>
-                    </div>
-                    <button type="submit" class="btn">Login</button>
-                    <p class="signup-text">Don't have an account? <a href="#">Sign up</a></p>
-                </form>
-            </div>
+    <div class="mock-phone">
+        <div class="screen-container">
+            <h1>Login</h1>
+            <form onsubmit="return loginRedirect(event)">
+                <div class="input-box">
+                    <input type="text" placeholder="Username" required>
+                </div>
+                <div class="input-box">
+                    <input type="password" placeholder="Password" required>
+                </div>
+                <button type="submit" class="btn">Login</button>
+                <p class="mt-2">Don't have an account? <a href="#">Sign up</a></p>
+            </form>
         </div>
     </div>
 
@@ -35,7 +32,6 @@
             window.location.href = "homepage.html"; // Redirect after login
         }
     </script>
-
 </body>
 
 </html>
