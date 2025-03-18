@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Streak Planner</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="homepage_styles.css">
+</head>
+<body>
+    <div class="mock-phone">
+        <div class="screen-container">
+            <h1>STREAK PLANNER</h1>
+
+            <div class="todo-list mb-3">
+                <h3 class="text-center">Activity List</h3>
+                <div id="activities-container">
+                    <!-- Activities will be dynamically added here -->
+                </div>
+                <button class="btn mt-2">
+                    <a href="add_task.html" style="color: var(--surface-color)">+ Add Tasks</a>
+                </button>
+            </div>
+
+            <div class="footer">
+                <a href="calendar.html" class="footer-btn">📅<span>Calendar</span></a>
+                <a href="Progress_Tracker.html" class="footer-btn">📈<span>Progress</span></a>
+                <a href="leaderboard.html" class="footer-btn">🏆<span>Leaderboard</span></a>
+            </div>
+        </div>
+    </div>
+
+    <script src="taskManager.js"></script>
+    <script src="homepage_script.js"></script>
+</body>
+</html>

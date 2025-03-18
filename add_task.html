@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Task</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="mock-phone">
+        <div class="screen-container">
+            <button onclick="goBack()" class="footer-btn mb-2">← Back</button>
+            <h1>Add Task</h1>
+
+            <form id="task-form" class="mt-2">
+                <div class="input-box">
+                    <label for="activity-name">Activity Name:</label>
+                    <input type="text" id="activity-name" placeholder="Enter activity name" required>
+                </div>
+
+                <div class="input-box">
+                    <label for="task-name">Task Name:</label>
+                    <input type="text" id="task-name" placeholder="Enter task name" required>
+                </div>
+
+                <div class="input-box">
+                    <label for="due-date">Due Date:</label>
+                    <input type="date" id="due-date" required>
+                </div>
+
+                <div class="input-box">
+                    <label for="difficulty">Set Difficulty:</label>
+                    <input type="number" id="difficulty" min="1" max="5" placeholder="1-5" required>
+                </div>
+
+                <button type="submit" class="btn">Add Task</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="taskManager.js"></script>
+    <script>
+        // Get activity name from URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const activityName = urlParams.get('activity');
+        
+        // Pre-fill activity name if provided
+        if (activityName) {
+            const activityInput = document.getElementById("activity-name");
+            activityInput.value = activityName;
+            activityInput.readOnly = true; // Make it read-only since we're coming from a specific activity
+        }
+
+        function goBack() {
+            if (activityName) {
+                window.location.href = `tasks.html?activity=${encodeURIComponent(activityName)}`;
+            } else {
+                window.location.href = "homepage.html";
+            }
+        }
+
+        document.getElementById("task-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+            
+            const activityName = document.getElementById("activity-name").value;
+            const taskName = document.getElementById("task-name").value;
+            const dueDateInput = document.getElementById("due-date").value;
+            const difficulty = document.getElementById("difficulty").value;
+            
+            // Fix timezone issue by ensuring date is correctly formatted
+            // Parse the input date and create a date at noon to avoid timezone issues
+            const [year, month, day] = dueDateInput.split('-').map(Number);
+            const dueDate = new Date(Date.UTC(year, month - 1, day, 12, 0, 0)).toISOString();
+
+            // Add activity if it doesn't exist
+            addActivity(activityName);
+            
+            // Add task to the activity
+            addTask(activityName, taskName, dueDate, difficulty);
+
+            alert("Task added successfully!");
+            
+            // Return to the task page if we came from there, otherwise go to homepage
+            if (urlParams.get('activity')) {
+                window.location.href = `tasks.html?activity=${encodeURIComponent(activityName)}`;
+            } else {
+                window.location.href = "homepage.html";
+            }
+        });
+    </script>
+</body>
+</html>

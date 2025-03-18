@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tasks</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="mock-phone">
+        <div class="screen-container">
+            <a href="homepage.html" class="footer-btn mb-2">← Back</a>
+            <h1 id="activity-title">Tasks</h1>
+
+            <div class="todo-list mt-2" id="task-container">
+                <h3 class="text-center mb-2">To Do List</h3>
+                <div id="tasks-container">
+                    <!-- Tasks will be dynamically added here -->
+                </div>
+                <button class="btn mt-2" onclick="window.location.href=`add_task.html?activity=${encodeURIComponent(activityName)}`">+ Add Task</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="taskManager.js"></script>
+    <script src="tasks_script.js"></script>
+</body>
+</html> 
