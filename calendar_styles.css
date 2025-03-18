@@ -109,3 +109,38 @@ h1 {
 .calendar-nav-btn:hover {
     color: var(--primary-hover);
 }
+.suggested-schedule-container {
+    margin-top: var(--spacing-lg);
+    padding: var(--spacing-md);
+    background: var(--light-gray);
+    border-radius: var(--border-radius-md);
+    max-height: 300px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;  /* IE and Edge */
+}
+.suggested-schedule-container::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+}
+.suggested-task {
+    background-color: var(--surface-color);
+    margin-bottom: var(--spacing-sm);
+}
+.difficulty-indicator {
+    display: inline-block;
+    margin-right: var(--spacing-xs);
+    font-size: var(--font-size-sm);
+    color: var(--warning-color);
+}
+.difficulty-1 { opacity: 0.2; }
+.difficulty-2 { opacity: 0.4; }
+.difficulty-3 { opacity: 0.6; }
+.difficulty-4 { opacity: 0.8; }
+.difficulty-5 { opacity: 1; }
+.no-tasks {
+    text-align: center;
+    color: var(--secondary-color);
+    padding: var(--spacing-md);
+    font-style: italic;
+}

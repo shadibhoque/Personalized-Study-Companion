@@ -50,25 +50,30 @@ function displayTasks(tasks, taskList) {
         const taskItem = document.createElement('div');
         taskItem.className = 'task';
 
+        const difficultyIndicator = document.createElement('span');
+        difficultyIndicator.className = `difficulty-indicator difficulty-${task.difficulty}`;
+
         const checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
         checkbox.checked = task.isChecked;
         checkbox.addEventListener('change', () => {
             toggleTask(task.activityName, task.taskIndex);
             markDaysWithTasks();
+            displaySuggestedSchedule();
         });
 
         const taskButton = document.createElement('button');
         taskButton.className = 'task-button';
         taskButton.textContent = `${task.name} (${task.activityName})`;
         taskButton.onclick = () => {
-            window.location.href = `milestone1_sections.html?activity=${encodeURIComponent(task.activityName)}&taskIndex=${task.taskIndex}`;
+            window.location.href = `sections.html?activity=${encodeURIComponent(task.activityName)}&taskIndex=${task.taskIndex}`;
         };
 
         const progressText = document.createElement('small');
         progressText.className = 'task-progress';
         progressText.textContent = `${task.progress || 0}%`;
 
+        taskItem.appendChild(difficultyIndicator);
         taskItem.appendChild(checkbox);
         taskItem.appendChild(taskButton);
         taskItem.appendChild(progressText);
@@ -262,7 +267,7 @@ function displayUpcomingTasks() {
         taskButton.className = 'task-button';
         taskButton.textContent = `${task.name} (${task.activityName})`;
         taskButton.onclick = () => {
-            window.location.href = `milestone1_sections.html?activity=${encodeURIComponent(task.activityName)}&taskIndex=${task.taskIndex}`;
+            window.location.href = `sections.html?activity=${encodeURIComponent(task.activityName)}&taskIndex=${task.taskIndex}`;
         };
 
         const dueDate = document.createElement('small');
@@ -279,3 +284,85 @@ function displayUpcomingTasks() {
 
 // Display upcoming tasks
 displayUpcomingTasks();
+
+// Function to get suggested schedule for tasks
+function getSuggestedSchedule(limit = 3) {
+    const activities = getActivities();
+    let allTasks = [];
+
+    // Collect all uncompleted tasks
+    for (const [activityName, activityData] of Object.entries(activities)) {
+        activityData.tasks.forEach((task, taskIndex) => {
+            if (!task.isChecked) {
+                allTasks.push({
+                    activityName,
+                    taskIndex,
+                    ...task
+                });
+            }
+        });
+    }
+
+    // Sort tasks by a combination of due date and difficulty
+    allTasks.sort((a, b) => {
+        const dateA = getLocalDate(a.dueDate);
+        const dateB = getLocalDate(b.dueDate);
+        
+        // Calculate days until due
+        const daysUntilDueA = Math.ceil((dateA - currentDate) / (1000 * 60 * 60 * 24));
+        const daysUntilDueB = Math.ceil((dateB - currentDate) / (1000 * 60 * 60 * 24));
+        
+        // Higher difficulty tasks should be started earlier
+        const priorityScoreA = daysUntilDueA / parseInt(a.difficulty);
+        const priorityScoreB = daysUntilDueB / parseInt(b.difficulty);
+        
+        return priorityScoreA - priorityScoreB;
+    });
+
+    // Return only the top priority tasks
+    return allTasks.slice(0, limit);
+}
+
+// Function to display suggested schedule
+function displaySuggestedSchedule() {
+    const suggestedContainer = document.getElementById('suggested-schedule');
+    const suggestedTasks = getSuggestedSchedule();
+
+    if (suggestedTasks.length === 0) {
+        suggestedContainer.innerHTML = '<p class="no-tasks">No tasks to schedule</p>';
+        return;
+    }
+
+    suggestedContainer.innerHTML = '<h3>Suggested Schedule</h3>';
+
+    suggestedTasks.forEach(task => {
+        const taskItem = document.createElement('div');
+        taskItem.className = 'task suggested-task';
+
+        const difficultyIndicator = document.createElement('span');
+        difficultyIndicator.className = `difficulty-indicator difficulty-${task.difficulty}`;
+        //difficultyIndicator.textContent = '⚡'.repeat(parseInt(task.difficulty));
+        
+        const taskButton = document.createElement('button');
+        taskButton.className = 'task-button';
+        taskButton.textContent = `${task.name} (${task.activityName})`;
+        taskButton.onclick = () => {
+            window.location.href = `sections.html?activity=${encodeURIComponent(task.activityName)}&taskIndex=${task.taskIndex}`;
+        };
+
+        const dueDate = document.createElement('small');
+        dueDate.className = 'task-progress';
+        const daysUntilDue = Math.ceil((getLocalDate(task.dueDate) - currentDate) / (1000 * 60 * 60 * 24));
+        dueDate.textContent = `Due in ${daysUntilDue} days`;
+
+        taskItem.appendChild(difficultyIndicator);
+        taskItem.appendChild(taskButton);
+        taskItem.appendChild(dueDate);
+
+        suggestedContainer.appendChild(taskItem);
+    });
+}
+
+// Add call to display suggested schedule after calendar generation
+generateCalendar();
+displaySuggestedSchedule();
