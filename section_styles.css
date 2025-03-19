@@ -1,0 +1,49 @@
+.task-weight-container {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+.task-weight {
+    width: 60px;
+    padding: var(--spacing-xs);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-sm);
+    font-size: var(--font-size-sm);
+    text-align: center;
+}
+.task-input-container {
+    margin-top: var(--spacing-lg);
+    display: flex;
+    gap: var(--spacing-xs);
+    width: 100%;
+}
+#task-name-input {
+    flex: 1;
+    min-width: 0;
+    padding: var(--spacing-sm);
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius-md);
+    font-size: var(--font-size-md);
+}
+#add-task-btn {
+    padding: var(--spacing-xs);
+    font-size: var(--font-size-sm);
+    width: auto;
+    flex-shrink: 0;
+}
+.task-header {
+    margin-bottom: var(--spacing-lg);
+}
+.task-info {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-sm);
+}
+.task-info small {
+    background: var(--light-gray);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--border-radius-sm);
+    color: var(--secondary-color);
+    font-size: var(--font-size-sm);
+}

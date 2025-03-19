@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Sections</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="section_styles.css">
+</head>
+<body>
+        <div class="mock-phone">
+        <div class="screen-container">
+            <button onclick="goBack()" class="footer-btn mb-2">← Back</button>
+            <div class="task-header">
+                <h1 id="task-title">Task Sections</h1>
+                <div class="task-info">
+                    <small id="due-date"></small>
+                    <small id="difficulty"></small>
+                </div>
+            </div>
+
+            <div class="todo-list mt-2" id="task-container">
+                <h3 class="text-center mb-2">To Do List</h3>
+                <!-- Subtasks will be dynamically added here -->
+                </div>
+                
+                <div class="task-input-container">
+                <input type="text" id="task-name-input" placeholder="Enter section name">
+                <button id="add-task-btn" class="btn">+ Add Section</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="taskManager.js"></script>
+    <script src="sections_script.js"></script>
+</body>
+</html>

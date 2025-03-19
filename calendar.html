@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar View</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="calendar_styles.css">
+</head>
+<body>
+        <div class="mock-phone">
+        <div class="screen-container">
+            <a href="homepage.html" class="footer-btn mb-2">← Back</a>
+
+            <div class="calendar-header">
+                <button id="prevMonth" class="calendar-nav-btn">&larr;</button>
+                <h1 id="monthDisplay"></h1>
+                <button id="nextMonth" class="calendar-nav-btn">&rarr;</button>
+            </div>
+
+            <div class="calendar-container">
+                <div class="weekdays">
+                    <div>Su</div>
+                    <div>Mo</div>
+                    <div>Tu</div>
+                    <div>We</div>
+                    <div>Th</div>
+                    <div>Fr</div>
+                    <div>Sa</div>
+                </div>
+
+                <div id="calendar"></div>
+            </div>
+
+            <div class="task-list-container">
+                <h3 id="task-date">Select a date</h3>
+                <ul id="task-list"></ul>
+            </div>
+
+            <div class="suggested-schedule-container">
+                <div id="suggested-schedule"></div>
+            </div>
+
+            <div class="upcoming-task-container">
+                <h3 class="mb-1">Next Due Tasks</h3>
+                <div id="upcoming-task">No upcoming tasks</div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="taskManager.js"></script>
+    <script src="calendar_script.js"></script>
+</body>
+</html>
