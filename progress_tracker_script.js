@@ -33,11 +33,11 @@ function toggleGraph() {
 function drawGraph1() {
     const ctx = document.getElementById("graphCanvas").getContext("2d");
     chartInstance = new Chart(ctx, {
-        type: "bar",
+        type: "line",
         data: {
-            labels: ["A", "B", "C", "D"],
+            labels: ["Jan-Mar", "Apr-Jun", "Jul-Sept", "Oct-Dec"],
             datasets: [{
-                label: "Progress Data 1",
+                label: "Yearly",
                 data: [12, 19, 3, 5],
                 backgroundColor: "blue"
             }]
@@ -51,10 +51,10 @@ function drawGraph2() {
     chartInstance = new Chart(ctx, {
         type: "line",
         data: {
-            labels: ["X", "Y", "Z", "W"],
+            labels: ["Week1", "Week2", "Week3", "Week4"],
             datasets: [{
-                label: "Progress Data 2",
-                data: [5, 10, 15, 20],
+                label: "Monthly",
+                data: [10, 15, 5, 20],
                 borderColor: "red",
                 fill: false
             }]
